@@ -1,0 +1,24 @@
+/* Header */
+.header {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	z-index: 1;
+	padding: 2em;
+	.navbar {
+		justify-items: center;
+		align-items: center;
+		height: 50px;
+		&__logo {
+			grid-column: 2;
+		}
+		&__link:first-of-type {
+			grid-column: 8;
+		}
+		&__link {
+			color: #eee;
+		}
+	}
+}

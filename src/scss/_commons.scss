@@ -11,3 +11,68 @@
 	font-family: 'Gotham-Medium';
 	src: url(../assets/fonts/Gotham-Medium.otf);
 }
+
+/* General */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	max-width: 2000px;
+	margin: 0 auto;
+	font-family: 'Gotham-Book';
+}
+main {
+	grid-column: 1/13;
+}
+a {
+	text-decoration: none;
+}
+
+.display-grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+}
+
+/* Layout */
+// @for $i from 1 through 12 {
+// 	.col-#{$i} {
+// 		grid-column: span #{$i};
+// 	}
+// }
+// @for $i from 1 through 12 {
+// 	.offset-line-#{$i} {
+// 		grid-column: #{$i};
+// 	}
+// }
+
+/* Mockup */
+// .test-block {
+// 	background: darkcyan;
+// 	border: 1px solid black;
+// 	padding: 5px;
+// }
+.test-element {
+	background: cadetblue;
+	height: 100px;
+	border: 1px solid black;
+}
+.hidden {
+	display: none;
+}
+
+.jumbotron {
+	height: 500px;
+}
+
+.cards {
+	height: 300px;
+	align-items: center;
+}
+
+.banners {
+	height: 400px;
+	align-items: center;
+}

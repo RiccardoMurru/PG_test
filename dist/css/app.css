@@ -1,3 +1,4 @@
+/* Generals */
 /* Typography */
 @font-face {
   font-family: "Gotham-Bold";
@@ -10,4 +11,124 @@
 @font-face {
   font-family: "Gotham-Medium";
   src: url(../assets/fonts/Gotham-Medium.otf);
+}
+/* General */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 2000px;
+  margin: 0 auto;
+  font-family: "Gotham-Book";
+}
+
+main {
+  grid-column: 1/13;
+}
+
+a {
+  text-decoration: none;
+}
+
+.display-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Layout */
+/* Mockup */
+.test-element {
+  background: cadetblue;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.hidden {
+  display: none;
+}
+
+.jumbotron {
+  height: 500px;
+}
+
+.cards {
+  height: 300px;
+  align-items: center;
+}
+
+.banners {
+  height: 400px;
+  align-items: center;
+}
+
+/* Header */
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 1;
+  padding: 2em;
+}
+.header .navbar {
+  justify-items: center;
+  align-items: center;
+  height: 50px;
+}
+.header .navbar__logo {
+  grid-column: 2;
+}
+.header .navbar__link:first-of-type {
+  grid-column: 8;
+}
+.header .navbar__link {
+  color: #eee;
+}
+
+/* Main */
+/* Jumbotron */
+.jumbotron {
+  position: relative;
+  grid-column: 1/13;
+  justify-items: center;
+  align-items: center;
+}
+.jumbotron i {
+  display: inline-block;
+  position: absolute;
+  top: 70%;
+  font-size: 3em;
+  color: #eee;
+  cursor: pointer;
+}
+.jumbotron i:first-of-type {
+  grid-column: 1/2;
+}
+.jumbotron i:last-of-type {
+  grid-column: 12;
+}
+.jumbotron__img {
+  display: none;
+  /* gestito da jQuery */
+  grid-column: 1/13;
+  max-width: 100%;
+}
+.jumbotron__img.active {
+  display: block;
+}
+.jumbotron__text {
+  position: absolute;
+  top: 50%;
+  grid-column: 3/5;
+  color: #eee;
+}
+.jumbotron__text h1 {
+  font-size: 4em;
+  font-family: "Gotham-Bold";
+  margin-bottom: 20px;
 }

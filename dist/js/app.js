@@ -93,7 +93,61 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {}); // End Doc Ready
+$(document).ready(function () {
+  /**********************
+   * Slider functionality
+   **********************/
+  var imgFirst = $('.first');
+  var imgLast = $('.last');
+  var arrowRight = $('.arrow-right');
+  var arrowLeft = $('.arrow-left'); // let counterFirst = $('.first-counter');
+  // let counterLast = $('.last-counter');
+  // cambio immagine a click su freccia avanti
+
+  arrowRight.click(forward); // cambio immagine a click su freccia indietro
+
+  arrowLeft.click(backwards);
+  /************
+   * Functions
+   ************/
+
+  function forward() {
+    var activeImage = $('.active'); // let activeCounter = $('.active-counter')
+    // scorrimento immagini
+
+    activeImage.toggleClass('active');
+    activeImage.next('img').toggleClass('active');
+
+    if (activeImage.hasClass('last')) {
+      imgFirst.toggleClass('active');
+    } // scorrimento contatore
+    // activeCounter.toggleClass('active-counter');
+    // activeCounter.next('li').toggleClass('active-counter');
+    // if (activeCounter.hasClass('last-counter')) {
+    //     counterFirst.toggleClass('active-counter');
+    // }
+
+  } // funzione scorrimento indietro
+
+
+  function backwards() {
+    var activeImage = $('.active');
+    var activeCounter = $('.active-counter'); // scorrimento immagini
+
+    activeImage.toggleClass('active');
+    activeImage.prev('img').toggleClass('active');
+
+    if (activeImage.hasClass('first')) {
+      imgLast.toggleClass('active');
+    } // // scorrimento contatore
+    // activeCounter.toggleClass('active-counter');
+    // activeCounter.prev('li').toggleClass('active-counter');
+    // if (activeCounter.hasClass('first-counter')) {
+    //     counterLast.toggleClass('active-counter');
+    // }
+
+  }
+}); // End Doc Ready
 
 /***/ }),
 

@@ -4,10 +4,50 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="dist/css/app.css" />
+		<!-- Fontawesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+		/>
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>Hello</h1>
+		<header class="header">
+			<nav class="test-block display-grid navbar">
+				<img
+					src="src/assets/img/logo-playground-white.png"
+					alt="logo"
+					class="navbar__logo"
+				/>
+				<a href="#" class="navbar__link">we are</a>
+				<a href="#" class="navbar__link">we do</a>
+				<a href="#" class="navbar__link">careers</a>
+				<a href="#" class="navbar__link">contact us</a>
+			</nav>
+		</header>
+		<main>
+			<section class="jumbotron display-grid">
+				<i class="fas fa-chevron-left arrow-left"></i>
+				<i class="fas fa-chevron-right arrow-right"></i>
+				<img
+					src="src/assets/img/slide-hello.jpg"
+					alt="slide-hello"
+					class="jumbotron__img first active"
+				/>
+				<img src="src/assets/img/slide-play.jpg" alt="slide-play" class="jumbotron__img" />
+				<img
+					src="src/assets/img/slide-circle.jpg"
+					alt="slide-circle"
+					class="jumbotron__img last"
+				/>
+				<div class="jumbotron__text">
+					<h1>lorem ipsum.</h1>
+					<p>
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error, molestiae.
+					</p>
+				</div>
+			</section>
+		</main>
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!-- JS -->
