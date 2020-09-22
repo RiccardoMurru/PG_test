@@ -94,15 +94,27 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  /**
+   * Show menu on click
+   */
+  var hamburger = $('.hamburger');
+  var menu = $('.navbar__items');
+  hamburger.click(function () {
+    menu.toggle();
+  });
+  $('body').on('click', '.navbar__link', function () {
+    menu.hide();
+  });
   /**********************
    * Slider functionality
    **********************/
+
   var imgFirst = $('.first');
   var imgLast = $('.last');
   var arrowRight = $('.arrow-right');
-  var arrowLeft = $('.arrow-left'); // let counterFirst = $('.first-counter');
-  // let counterLast = $('.last-counter');
-  // cambio immagine a click su freccia avanti
+  var arrowLeft = $('.arrow-left');
+  var counterFirst = $('.first-counter');
+  var counterLast = $('.last-counter'); // cambio immagine a click su freccia avanti
 
   arrowRight.click(forward); // cambio immagine a click su freccia indietro
 
@@ -112,8 +124,8 @@ $(document).ready(function () {
    ************/
 
   function forward() {
-    var activeImage = $('.active'); // let activeCounter = $('.active-counter')
-    // scorrimento immagini
+    var activeImage = $('.active');
+    var activeCounter = $('.active-counter'); // scorrimento immagini
 
     activeImage.toggleClass('active');
     activeImage.next('img').toggleClass('active');
@@ -121,12 +133,14 @@ $(document).ready(function () {
     if (activeImage.hasClass('last')) {
       imgFirst.toggleClass('active');
     } // scorrimento contatore
-    // activeCounter.toggleClass('active-counter');
-    // activeCounter.next('li').toggleClass('active-counter');
-    // if (activeCounter.hasClass('last-counter')) {
-    //     counterFirst.toggleClass('active-counter');
-    // }
 
+
+    activeCounter.toggleClass('active-counter');
+    activeCounter.next('li').toggleClass('active-counter');
+
+    if (activeCounter.hasClass('last-counter')) {
+      counterFirst.toggleClass('active-counter');
+    }
   } // funzione scorrimento indietro
 
 
@@ -139,13 +153,15 @@ $(document).ready(function () {
 
     if (activeImage.hasClass('first')) {
       imgLast.toggleClass('active');
-    } // // scorrimento contatore
-    // activeCounter.toggleClass('active-counter');
-    // activeCounter.prev('li').toggleClass('active-counter');
-    // if (activeCounter.hasClass('first-counter')) {
-    //     counterLast.toggleClass('active-counter');
-    // }
+    } // scorrimento contatore
 
+
+    activeCounter.toggleClass('active-counter');
+    activeCounter.prev('li').toggleClass('active-counter');
+
+    if (activeCounter.hasClass('first-counter')) {
+      counterLast.toggleClass('active-counter');
+    }
   }
 }); // End Doc Ready
 

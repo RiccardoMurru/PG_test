@@ -64,32 +64,65 @@ a {
   align-items: center;
 }
 
+/* Colors */
 /* Header */
 /* Header */
 .header {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
   z-index: 1;
   padding: 2em;
 }
 .header .navbar {
   justify-items: center;
   align-items: center;
-  height: 50px;
 }
-.header .navbar__logo {
-  grid-column: 2;
+.header .navbar__items {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60vw;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 50px 20px;
 }
-.header .navbar__link:first-of-type {
-  grid-column: 8;
+.header .navbar__items .navbar__link {
+  display: block;
+  text-decoration: none;
+  color: #eee;
+  font-size: 2em;
+  padding: 20px 0;
 }
-.header .navbar__link {
+.header .navbar .hamburger {
+  grid-column: 12;
+  font-size: 2em;
+  cursor: pointer;
   color: #eee;
 }
 
+@media (min-width: 768px) {
+  .header .navbar__logo {
+    grid-column: 2;
+  }
+  .header .navbar__items {
+    display: block;
+    background: transparent;
+    position: static;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    grid-column: 7/12;
+  }
+  .header .navbar__items .navbar__link {
+    display: inline-block;
+    font-size: 1em;
+    padding: 0 35px;
+  }
+  .header .navbar .hamburger {
+    display: none;
+  }
+}
 /* Main */
 /* Jumbotron */
 .jumbotron {
@@ -97,11 +130,12 @@ a {
   grid-column: 1/13;
   justify-items: center;
   align-items: center;
+  height: 100%;
 }
 .jumbotron i {
   display: inline-block;
   position: absolute;
-  top: 70%;
+  top: 50%;
   font-size: 3em;
   color: #eee;
   cursor: pointer;
@@ -123,7 +157,7 @@ a {
 }
 .jumbotron__text {
   position: absolute;
-  top: 50%;
+  top: 40%;
   grid-column: 3/5;
   color: #eee;
 }
@@ -131,4 +165,23 @@ a {
   font-size: 4em;
   font-family: "Gotham-Bold";
   margin-bottom: 20px;
+}
+.jumbotron .img-counter ul {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 20px;
+  border-radius: 20px;
+}
+.jumbotron .img-counter ul li {
+  list-style: none;
+  border-radius: 50%;
+  background: #666;
+  padding: 5px;
+  margin: 0 10px;
+}
+.jumbotron .img-counter ul li.active-counter {
+  background: #fff;
 }

@@ -1,14 +1,27 @@
 $(document).ready(function() {
+	/**
+	 * Show menu on click
+	 */
+
+	let hamburger = $('.hamburger');
+	let menu = $('.navbar__items');
+
+	hamburger.click(function() {
+		menu.toggle();
+	});
+	$('body').on('click', '.navbar__link', function() {
+		menu.hide();
+	});
+
 	/**********************
 	 * Slider functionality
 	 **********************/
-
 	let imgFirst = $('.first');
 	let imgLast = $('.last');
 	let arrowRight = $('.arrow-right');
 	let arrowLeft = $('.arrow-left');
-	// let counterFirst = $('.first-counter');
-	// let counterLast = $('.last-counter');
+	let counterFirst = $('.first-counter');
+	let counterLast = $('.last-counter');
 
 	// cambio immagine a click su freccia avanti
 	arrowRight.click(forward);
@@ -19,10 +32,9 @@ $(document).ready(function() {
 	/************
 	 * Functions
 	 ************/
-
 	function forward() {
 		let activeImage = $('.active');
-		// let activeCounter = $('.active-counter')
+		let activeCounter = $('.active-counter');
 
 		// scorrimento immagini
 		activeImage.toggleClass('active');
@@ -33,12 +45,12 @@ $(document).ready(function() {
 		}
 
 		// scorrimento contatore
-		// activeCounter.toggleClass('active-counter');
-		// activeCounter.next('li').toggleClass('active-counter');
+		activeCounter.toggleClass('active-counter');
+		activeCounter.next('li').toggleClass('active-counter');
 
-		// if (activeCounter.hasClass('last-counter')) {
-		//     counterFirst.toggleClass('active-counter');
-		// }
+		if (activeCounter.hasClass('last-counter')) {
+			counterFirst.toggleClass('active-counter');
+		}
 	}
 
 	// funzione scorrimento indietro
@@ -54,12 +66,12 @@ $(document).ready(function() {
 			imgLast.toggleClass('active');
 		}
 
-		// // scorrimento contatore
-		// activeCounter.toggleClass('active-counter');
-		// activeCounter.prev('li').toggleClass('active-counter');
+		// scorrimento contatore
+		activeCounter.toggleClass('active-counter');
+		activeCounter.prev('li').toggleClass('active-counter');
 
-		// if (activeCounter.hasClass('first-counter')) {
-		//     counterLast.toggleClass('active-counter');
-		// }
+		if (activeCounter.hasClass('first-counter')) {
+			counterLast.toggleClass('active-counter');
+		}
 	}
 }); // End Doc Ready

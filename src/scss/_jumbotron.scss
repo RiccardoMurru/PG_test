@@ -4,10 +4,11 @@
 	grid-column: 1/13;
 	justify-items: center;
 	align-items: center;
+	height: 100%;
 	& i {
 		display: inline-block;
 		position: absolute;
-		top: 70%;
+		top: 50%;
 		font-size: 3em;
 		color: #eee;
 		cursor: pointer;
@@ -28,13 +29,34 @@
 	}
 	&__text {
 		position: absolute;
-		top: 50%;
+		top: 40%;
 		grid-column: 3/5;
 		color: #eee;
 		h1 {
 			font-size: 4em;
 			font-family: 'Gotham-Bold';
 			margin-bottom: 20px;
+		}
+	}
+	.img-counter {
+		ul {
+			position: absolute;
+			bottom: 1%;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			padding: 20px;
+			border-radius: 20px;
+			li {
+				list-style: none;
+				border-radius: 50%;
+				background: #666;
+				padding: 5px;
+				margin: 0 10px;
+				&.active-counter {
+					background: #fff;
+				}
+			}
 		}
 	}
 }
