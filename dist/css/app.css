@@ -50,20 +50,6 @@ a {
   display: none;
 }
 
-.jumbotron {
-  height: 500px;
-}
-
-.cards {
-  height: 300px;
-  align-items: center;
-}
-
-.banners {
-  height: 400px;
-  align-items: center;
-}
-
 /* Colors */
 /* Header */
 /* Header */
@@ -149,7 +135,7 @@ a {
   position: absolute;
   color: #eee;
   grid-column: 3/9;
-  bottom: -200px;
+  bottom: 5%;
 }
 .jumbotron__text h1 {
   font-size: 2.5em;
@@ -172,7 +158,7 @@ a {
 }
 .jumbotron .img-counter ul {
   position: absolute;
-  bottom: -250px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -196,12 +182,63 @@ a {
   }
   .jumbotron__text {
     grid-column: 3/4;
-    top: 50%;
+    top: 60%;
+    transform: translateY(-50%);
   }
   .jumbotron__text h1 {
-    font-size: 3em;
+    font-size: 4em;
   }
   .jumbotron i {
-    top: 70%;
+    top: 50%;
+  }
+}
+/* Cards */
+.cards-container {
+  display: flex;
+  padding: 50px 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #ddd;
+}
+.cards-container .card {
+  flex-basis: 100%;
+}
+.cards-container .card__header {
+  height: 100px;
+}
+.cards-container .card__header img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cards-container .card__body {
+  height: 200px;
+  background: #fff;
+  text-align: center;
+  padding: 40px 20px;
+}
+.cards-container .card__footer {
+  margin-bottom: 30px;
+}
+.cards-container .card__footer .button {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  background: #000;
+}
+.cards-container .card__footer .button a {
+  text-decoration: none;
+  color: #eee;
+}
+
+@media (min-width: 768px) {
+  .cards-container {
+    justify-content: center;
+  }
+  .cards-container .card {
+    flex-basis: 25%;
+    margin: 0 15px;
   }
 }

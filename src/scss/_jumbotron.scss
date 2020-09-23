@@ -19,7 +19,7 @@
 		position: absolute;
 		color: $text-white;
 		grid-column: 3/9;
-		bottom: -200px;
+		bottom: 5%;
 		h1 {
 			font-size: 2.5em;
 			font-family: 'Gotham-Bold';
@@ -43,7 +43,7 @@
 	.img-counter {
 		ul {
 			position: absolute;
-			bottom: -250px;
+			bottom: 0;
 			left: 50%;
 			transform: translateX(-50%);
 			display: flex;
@@ -70,13 +70,14 @@
 		}
 		&__text {
 			grid-column: 3/4;
-			top: 50%;
+			top: 60%;
+			transform: translateY(-50%);
 			h1 {
-				font-size: 3em;
+				font-size: 4em;
 			}
 		}
 		i {
-			top: 70%;
+			top: 50%;
 		}
 	}
 }
