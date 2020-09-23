@@ -217,6 +217,7 @@ a {
   background: #fff;
   text-align: center;
   padding: 40px 20px;
+  line-height: 1.5rem;
 }
 .cards-container .card__footer {
   margin-bottom: 30px;
@@ -240,5 +241,67 @@ a {
   .cards-container .card {
     flex-basis: 25%;
     margin: 0 15px;
+  }
+}
+/* Banners */
+.banners-container .banner {
+  display: flex;
+  flex-wrap: wrap;
+  background: #000;
+}
+.banners-container .banner__text {
+  flex-basis: 60%;
+  color: #eee;
+  padding: 50px 10px;
+  line-height: 1.5rem;
+}
+.banners-container .banner__text h2 {
+  width: 50px;
+  font-size: 3em;
+  font-family: "Gotham-Bold";
+  margin-bottom: 30px;
+  line-height: 1em;
+}
+.banners-container .banner__text .banner__button {
+  display: inline-block;
+  padding: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 30px;
+  color: #eee;
+  border: 1px solid #fff;
+}
+
+@media (min-width: 768px) {
+  .banners-container .banner {
+    justify-content: center;
+    flex-wrap: nowrap;
+    height: 600px;
+  }
+  .banners-container .banner:nth-child(even) {
+    background: #fff;
+  }
+  .banners-container .banner:nth-child(even) .banner__text {
+    order: -1;
+    color: #000;
+  }
+  .banners-container .banner:nth-child(even) .banner__button {
+    color: #000;
+    border-color: #000;
+  }
+  .banners-container .banner__img {
+    width: 60%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .banners-container .banner__text {
+    align-self: center;
+    flex-basis: 50%;
+    max-width: 100%;
+    padding-left: 50px;
+  }
+  .banners-container .banner__text p {
+    width: 50%;
   }
 }
