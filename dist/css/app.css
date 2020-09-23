@@ -58,6 +58,10 @@ a {
   top: 0;
   z-index: 1;
   padding: 2em;
+  transition: background 0.7s;
+}
+.header.header-visible {
+  background: rgba(1, 1, 1, 0.95);
 }
 .header .navbar {
   justify-items: center;

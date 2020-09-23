@@ -4,6 +4,10 @@
 	top: 0;
 	z-index: 1;
 	padding: 2em;
+	transition: background 0.7s;
+	&.header-visible {
+		background: rgba(1, 1, 1, 0.95);
+	}
 	.navbar {
 		justify-items: center;
 		align-items: center;

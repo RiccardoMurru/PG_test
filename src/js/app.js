@@ -9,8 +9,40 @@ $(document).ready(function() {
 	hamburger.click(function() {
 		menu.toggle();
 	});
-	$('body').on('click', '.navbar__link', function() {
-		menu.hide();
+
+	// Hide link menu on click in modbile mode
+	let mediaQuery = window.matchMedia('(min-width: 768px)');
+	if (!mediaQuery.matches) {
+		$('.navbar__link').click(function() {
+			menu.hide();
+		});
+	}
+
+	// Scroll to section on click
+	$('.we-are-link').click(() => {
+		animateScroll($('#we-are'));
+	});
+	$('.we-do-link').click(() => {
+		animateScroll($('#we-do'));
+	});
+	$('.careers-link').click(() => {
+		animateScroll($('#careers'));
+	});
+	$('.contacts-link').click(() => {
+		animateScroll($('#contacts'));
+	});
+
+	// Cambio visibilità header
+	let header = $('.header');
+	$(window).scroll(() => {
+		let top = $(window).scrollTop();
+		if (top < 500) {
+			if (header.hasClass('header-visible')) {
+				header.removeClass('header-visible');
+			}
+		} else if (top >= 500 && top <= 1000) {
+			header.addClass('header-visible');
+		}
 	});
 
 	/**********************
@@ -73,5 +105,17 @@ $(document).ready(function() {
 		if (activeCounter.hasClass('first-counter')) {
 			counterLast.toggleClass('active-counter');
 		}
+	}
+
+	/****************
+	 * Animate Scroll
+	 ****************/
+	function animateScroll(section) {
+		$('html').animate(
+			{
+				scrollTop: section.offset().top,
+			},
+			800 //speed
+		);
 	}
 }); // End Doc Ready

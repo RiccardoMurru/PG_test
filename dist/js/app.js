@@ -101,9 +101,41 @@ $(document).ready(function () {
   var menu = $('.navbar__items');
   hamburger.click(function () {
     menu.toggle();
+  }); // Hide link menu on click in modbile mode
+
+  var mediaQuery = window.matchMedia('(min-width: 768px)');
+
+  if (!mediaQuery.matches) {
+    $('.navbar__link').click(function () {
+      menu.hide();
+    });
+  } // Scroll to section on click
+
+
+  $('.we-are-link').click(function () {
+    animateScroll($('#we-are'));
   });
-  $('body').on('click', '.navbar__link', function () {
-    menu.hide();
+  $('.we-do-link').click(function () {
+    animateScroll($('#we-do'));
+  });
+  $('.careers-link').click(function () {
+    animateScroll($('#careers'));
+  });
+  $('.contacts-link').click(function () {
+    animateScroll($('#contacts'));
+  }); // Cambio visibilità header
+
+  var header = $('.header');
+  $(window).scroll(function () {
+    var top = $(window).scrollTop();
+
+    if (top < 500) {
+      if (header.hasClass('header-visible')) {
+        header.removeClass('header-visible');
+      }
+    } else if (top >= 500 && top <= 1000) {
+      header.addClass('header-visible');
+    }
   });
   /**********************
    * Slider functionality
@@ -162,6 +194,17 @@ $(document).ready(function () {
     if (activeCounter.hasClass('first-counter')) {
       counterLast.toggleClass('active-counter');
     }
+  }
+  /****************
+   * Animate Scroll
+   ****************/
+
+
+  function animateScroll(section) {
+    $('html').animate({
+      scrollTop: section.offset().top
+    }, 800 //speed
+    );
   }
 }); // End Doc Ready
 
