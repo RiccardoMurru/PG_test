@@ -86,6 +86,7 @@ a {
   width: 60vw;
   background: rgba(0, 0, 0, 0.9);
   padding: 50px 20px;
+  z-index: 1;
 }
 .header .navbar__items .navbar__link {
   display: block;
@@ -106,18 +107,18 @@ a {
     grid-column: 2;
   }
   .header .navbar__items {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     background: transparent;
     position: static;
     padding: 0;
     height: 100%;
     width: 100%;
-    grid-column: 7/12;
+    grid-column: 7/13;
   }
   .header .navbar__items .navbar__link {
     display: inline-block;
     font-size: 1em;
-    padding: 0 35px;
   }
   .header .navbar .hamburger {
     display: none;
@@ -127,16 +128,39 @@ a {
 /* Jumbotron */
 .jumbotron {
   position: relative;
-  grid-column: 1/13;
+  grid-template-rows: 100vh;
   justify-items: center;
   align-items: center;
+}
+.jumbotron__img {
+  display: none;
+  /* gestito da jQuery */
+  grid-column: 1/13;
+  max-width: 100%;
+  grid-row: 1;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.jumbotron__img.active {
+  display: block;
+}
+.jumbotron__text {
+  position: absolute;
+  color: #eee;
+  grid-column: 3/9;
+  bottom: -200px;
+}
+.jumbotron__text h1 {
+  font-size: 2.5em;
+  font-family: "Gotham-Bold";
+  margin-bottom: 20px;
 }
 .jumbotron i {
   display: inline-block;
   position: absolute;
   top: 50%;
-  font-size: 3em;
+  font-size: 2em;
   color: #eee;
   cursor: pointer;
 }
@@ -146,29 +170,9 @@ a {
 .jumbotron i:last-of-type {
   grid-column: 12;
 }
-.jumbotron__img {
-  display: none;
-  /* gestito da jQuery */
-  grid-column: 1/13;
-  max-width: 100%;
-}
-.jumbotron__img.active {
-  display: block;
-}
-.jumbotron__text {
-  position: absolute;
-  top: 40%;
-  grid-column: 3/5;
-  color: #eee;
-}
-.jumbotron__text h1 {
-  font-size: 4em;
-  font-family: "Gotham-Bold";
-  margin-bottom: 20px;
-}
 .jumbotron .img-counter ul {
   position: absolute;
-  bottom: 1%;
+  bottom: -250px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -184,4 +188,20 @@ a {
 }
 .jumbotron .img-counter ul li.active-counter {
   background: #fff;
+}
+
+@media (min-width: 768px) {
+  .jumbotron__img {
+    height: 100%;
+  }
+  .jumbotron__text {
+    grid-column: 3/4;
+    top: 50%;
+  }
+  .jumbotron__text h1 {
+    font-size: 3em;
+  }
+  .jumbotron i {
+    top: 70%;
+  }
 }

@@ -1,47 +1,49 @@
 /* Jumbotron */
 .jumbotron {
 	position: relative;
-	grid-column: 1/13;
+	grid-template-rows: 100vh;
 	justify-items: center;
 	align-items: center;
-	height: 100%;
-	& i {
-		display: inline-block;
-		position: absolute;
-		top: 50%;
-		font-size: 3em;
-		color: #eee;
-		cursor: pointer;
-	}
-	& i:first-of-type {
-		grid-column: 1/2;
-	}
-	& i:last-of-type {
-		grid-column: 12;
-	}
 	&__img {
 		display: none; /* gestito da jQuery */
 		grid-column: 1/13;
 		max-width: 100%;
+		grid-row: 1;
+		height: 100%;
+		object-fit: cover;
 		&.active {
 			display: block;
 		}
 	}
 	&__text {
 		position: absolute;
-		top: 40%;
-		grid-column: 3/5;
-		color: #eee;
+		color: $text-white;
+		grid-column: 3/9;
+		bottom: -200px;
 		h1 {
-			font-size: 4em;
+			font-size: 2.5em;
 			font-family: 'Gotham-Bold';
 			margin-bottom: 20px;
+		}
+	}
+	i {
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		font-size: 2em;
+		color: #eee;
+		cursor: pointer;
+		&:first-of-type {
+			grid-column: 1/2;
+		}
+		&:last-of-type {
+			grid-column: 12;
 		}
 	}
 	.img-counter {
 		ul {
 			position: absolute;
-			bottom: 1%;
+			bottom: -250px;
 			left: 50%;
 			transform: translateX(-50%);
 			display: flex;
@@ -57,6 +59,24 @@
 					background: #fff;
 				}
 			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.jumbotron {
+		&__img {
+			height: 100%;
+		}
+		&__text {
+			grid-column: 3/4;
+			top: 50%;
+			h1 {
+				font-size: 3em;
+			}
+		}
+		i {
+			top: 70%;
 		}
 	}
 }

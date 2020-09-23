@@ -16,6 +16,7 @@
 			width: 60vw;
 			background: rgba(0, 0, 0, 0.9);
 			padding: 50px 20px;
+			z-index: 1;
 			.navbar__link {
 				display: block;
 				text-decoration: none;
@@ -40,17 +41,18 @@
 				grid-column: 2;
 			}
 			&__items {
-				display: block;
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
 				background: transparent;
 				position: static;
 				padding: 0;
 				height: 100%;
 				width: 100%;
-				grid-column: 7/12;
+				grid-column: 7/13;
+
 				.navbar__link {
 					display: inline-block;
 					font-size: 1em;
-					padding: 0 35px;
 				}
 			}
 			.hamburger {
