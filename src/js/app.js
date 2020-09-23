@@ -61,9 +61,58 @@ $(document).ready(function() {
 	// cambio immagine a click su freccia indietro
 	arrowLeft.click(backwards);
 
+	/***************
+	 * Ajax requests
+	 ***************/
+	let tabs = [$('#tab1'), $('#tab2'), $('#tab3')];
+	let endpoints = ['tab1.json', 'tab2.json', 'tab3.json'];
+	let content = $('.info-section__content');
+
+	// Chiamata ajax caricamento pagina
+	for (let i = tabs.length - 1; i >= 0; i--) {
+		ajaxRequest(endpoints[i], tabs[i], content);
+	}
+
+	// chiamate ajax click su tabs
+	tabs[0].click(() => {
+		content.html('');
+		$('.loader').show();
+		setTimeout(() => {
+			$('.loader').hide();
+			ajaxRequest(endpoints[0], tabs[0], content);
+		}, 800);
+		tabs[0].addClass('active');
+		tabs[1].removeClass('active');
+		tabs[2].removeClass('active');
+	});
+	tabs[1].click(() => {
+		content.html('');
+		$('.loader').show();
+		setTimeout(() => {
+			$('.loader').hide();
+			ajaxRequest(endpoints[1], tabs[1], content);
+		}, 800);
+		tabs[1].addClass('active');
+		tabs[0].removeClass('active');
+		tabs[2].removeClass('active');
+	});
+	tabs[2].click(() => {
+		content.html('');
+		$('.loader').show();
+		setTimeout(() => {
+			$('.loader').hide();
+			ajaxRequest(endpoints[2], tabs[2], content);
+		}, 800);
+		tabs[2].addClass('active');
+		tabs[0].removeClass('active');
+		tabs[1].removeClass('active');
+	});
+
 	/************
 	 * Functions
 	 ************/
+
+	// Scorrimento slider in avanti
 	function forward() {
 		let activeImage = $('.active');
 		let activeCounter = $('.active-counter');
@@ -85,7 +134,7 @@ $(document).ready(function() {
 		}
 	}
 
-	// funzione scorrimento indietro
+	// Scorrimento slider indietro
 	function backwards() {
 		var activeImage = $('.active');
 		var activeCounter = $('.active-counter');
@@ -107,15 +156,24 @@ $(document).ready(function() {
 		}
 	}
 
-	/****************
-	 * Animate Scroll
-	 ****************/
+	// Animate Scroll
 	function animateScroll(section) {
 		$('html').animate(
 			{
 				scrollTop: section.offset().top,
 			},
-			800 //speed
+			800
 		);
+	}
+
+	// Ajax request
+	function ajaxRequest(endpoint, tab, content) {
+		$.ajax({
+			method: 'GET',
+			url: 'src/assets/ajax/' + endpoint,
+		}).done((response) => {
+			tab.html(response.item.title);
+			content.html(response.item.content);
+		});
 	}
 }); // End Doc Ready

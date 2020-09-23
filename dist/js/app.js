@@ -151,9 +151,56 @@ $(document).ready(function () {
   arrowRight.click(forward); // cambio immagine a click su freccia indietro
 
   arrowLeft.click(backwards);
+  /***************
+   * Ajax requests
+   ***************/
+
+  var tabs = [$('#tab1'), $('#tab2'), $('#tab3')];
+  var endpoints = ['tab1.json', 'tab2.json', 'tab3.json'];
+  var content = $('.info-section__content'); // Chiamata ajax caricamento pagina
+
+  for (var i = tabs.length - 1; i >= 0; i--) {
+    ajaxRequest(endpoints[i], tabs[i], content);
+  } // chiamate ajax click su tabs
+
+
+  tabs[0].click(function () {
+    content.html('');
+    $('.loader').show();
+    setTimeout(function () {
+      $('.loader').hide();
+      ajaxRequest(endpoints[0], tabs[0], content);
+    }, 800);
+    tabs[0].addClass('active');
+    tabs[1].removeClass('active');
+    tabs[2].removeClass('active');
+  });
+  tabs[1].click(function () {
+    content.html('');
+    $('.loader').show();
+    setTimeout(function () {
+      $('.loader').hide();
+      ajaxRequest(endpoints[1], tabs[1], content);
+    }, 800);
+    tabs[1].addClass('active');
+    tabs[0].removeClass('active');
+    tabs[2].removeClass('active');
+  });
+  tabs[2].click(function () {
+    content.html('');
+    $('.loader').show();
+    setTimeout(function () {
+      $('.loader').hide();
+      ajaxRequest(endpoints[2], tabs[2], content);
+    }, 800);
+    tabs[2].addClass('active');
+    tabs[0].removeClass('active');
+    tabs[1].removeClass('active');
+  });
   /************
    * Functions
    ************/
+  // Scorrimento slider in avanti
 
   function forward() {
     var activeImage = $('.active');
@@ -173,7 +220,7 @@ $(document).ready(function () {
     if (activeCounter.hasClass('last-counter')) {
       counterFirst.toggleClass('active-counter');
     }
-  } // funzione scorrimento indietro
+  } // Scorrimento slider indietro
 
 
   function backwards() {
@@ -194,17 +241,24 @@ $(document).ready(function () {
     if (activeCounter.hasClass('first-counter')) {
       counterLast.toggleClass('active-counter');
     }
-  }
-  /****************
-   * Animate Scroll
-   ****************/
+  } // Animate Scroll
 
 
   function animateScroll(section) {
     $('html').animate({
       scrollTop: section.offset().top
-    }, 800 //speed
-    );
+    }, 800);
+  } // Ajax request
+
+
+  function ajaxRequest(endpoint, tab, content) {
+    $.ajax({
+      method: 'GET',
+      url: 'src/assets/ajax/' + endpoint
+    }).done(function (response) {
+      tab.html(response.item.title);
+      content.html(response.item.content);
+    });
   }
 }); // End Doc Ready
 

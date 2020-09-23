@@ -1,0 +1,47 @@
+/* Info section */
+.info-section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding: 50px 10px;
+	background: #ddd;
+	.tabs-container {
+		&__tab {
+			padding: 20px;
+			background: #bbb;
+			margin-bottom: 1px;
+			cursor: pointer;
+			&.active {
+				background: #000;
+				color: #fff;
+			}
+		}
+	}
+	&__content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		min-height: 400px;
+		background: #fff;
+		padding: 20px;
+		margin-top: 10px;
+	}
+	.loader {
+		display: none;
+		width: 50px;
+		position: absolute;
+		bottom: 35%;
+		animation: spin 1s linear infinite;
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
