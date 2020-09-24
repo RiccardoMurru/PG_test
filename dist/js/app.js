@@ -177,6 +177,10 @@ $(document).ready(function () {
   $('.contacts__form').submit(function () {
     email.validity.valid ? email.validationMessage('') : email.validationMessage('Enter an email address');
     textarea.validity.valid ? textarea.validationMessage('') : textare.validationMessage('Enter a message');
+  }); // Nascondere banner coockie policy
+
+  $('.policy__button').click(function () {
+    $(this).parent().hide();
   });
   /************
    * Functions
