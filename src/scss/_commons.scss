@@ -36,29 +36,6 @@ a {
 	grid-template-columns: repeat(12, 1fr);
 }
 
-/* Layout */
-// @for $i from 1 through 12 {
-// 	.col-#{$i} {
-// 		grid-column: span #{$i};
-// 	}
-// }
-// @for $i from 1 through 12 {
-// 	.offset-line-#{$i} {
-// 		grid-column: #{$i};
-// 	}
-// }
-
-/* Mockup */
-// .test-block {
-// 	background: darkcyan;
-// 	border: 1px solid black;
-// 	padding: 5px;
-// }
-.test-element {
-	background: cadetblue;
-	height: 100px;
-	border: 1px solid black;
-}
 .hidden {
 	display: none;
 }

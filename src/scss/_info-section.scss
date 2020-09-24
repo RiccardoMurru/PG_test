@@ -37,6 +37,20 @@
 	}
 }
 
+@media (min-width: 768px) {
+	.info-section {
+		flex-wrap: nowrap;
+		&__content {
+			flex-basis: 50%;
+			margin-top: 0;
+		}
+		.loader {
+			bottom: 45%;
+			left: 55%;
+		}
+	}
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);
