@@ -94,9 +94,7 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  /**
-   * Show menu on click
-   */
+  // Show menu on click
   var hamburger = $('.hamburger');
   var menu = $('.navbar__items');
   hamburger.click(function () {
@@ -165,37 +163,20 @@ $(document).ready(function () {
 
 
   tabs[0].click(function () {
-    content.html('');
-    $('.loader').show();
-    setTimeout(function () {
-      $('.loader').hide();
-      ajaxRequest(endpoints[0], tabs[0], content);
-    }, 800);
-    tabs[0].addClass('active');
-    tabs[1].removeClass('active');
-    tabs[2].removeClass('active');
+    ajaxOnClick(tabs[0], content, tabs[1], tabs[2], endpoints[0]);
   });
   tabs[1].click(function () {
-    content.html('');
-    $('.loader').show();
-    setTimeout(function () {
-      $('.loader').hide();
-      ajaxRequest(endpoints[1], tabs[1], content);
-    }, 800);
-    tabs[1].addClass('active');
-    tabs[0].removeClass('active');
-    tabs[2].removeClass('active');
+    ajaxOnClick(tabs[1], content, tabs[0], tabs[2], endpoints[1]);
   });
   tabs[2].click(function () {
-    content.html('');
-    $('.loader').show();
-    setTimeout(function () {
-      $('.loader').hide();
-      ajaxRequest(endpoints[2], tabs[2], content);
-    }, 800);
-    tabs[2].addClass('active');
-    tabs[0].removeClass('active');
-    tabs[1].removeClass('active');
+    ajaxOnClick(tabs[2], content, tabs[0], tabs[1], endpoints[2]);
+  }); // Validazione form
+
+  var email = $('#email');
+  var textarea = $('#message');
+  $('.contacts__form').submit(function () {
+    email.validity.valid ? email.validationMessage('') : email.validationMessage('Enter an email address');
+    textarea.validity.valid ? textarea.validationMessage('') : textare.validationMessage('Enter a message');
   });
   /************
    * Functions
@@ -259,6 +240,19 @@ $(document).ready(function () {
       tab.html(response.item.title);
       content.html(response.item.content);
     });
+  } // gestione chiamate ajax su click
+
+
+  function ajaxOnClick(activeTab, content, inactiveTab1, inactiveTab2, endpoint) {
+    content.html('');
+    $('.loader').show();
+    setTimeout(function () {
+      $('.loader').hide();
+      ajaxRequest(endpoint, activeTab, content);
+    }, 800);
+    activeTab.addClass('active');
+    inactiveTab1.removeClass('active');
+    inactiveTab2.removeClass('active');
   }
 }); // End Doc Ready
 

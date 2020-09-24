@@ -1,8 +1,5 @@
 $(document).ready(function() {
-	/**
-	 * Show menu on click
-	 */
-
+	// Show menu on click
 	let hamburger = $('.hamburger');
 	let menu = $('.navbar__items');
 
@@ -75,39 +72,27 @@ $(document).ready(function() {
 
 	// chiamate ajax click su tabs
 	tabs[0].click(() => {
-		content.html('');
-		$('.loader').show();
-		setTimeout(() => {
-			$('.loader').hide();
-			ajaxRequest(endpoints[0], tabs[0], content);
-		}, 800);
-		tabs[0].addClass('active');
-		tabs[1].removeClass('active');
-		tabs[2].removeClass('active');
+		ajaxOnClick(tabs[0], content, tabs[1], tabs[2], endpoints[0]);
 	});
 	tabs[1].click(() => {
-		content.html('');
-		$('.loader').show();
-		setTimeout(() => {
-			$('.loader').hide();
-			ajaxRequest(endpoints[1], tabs[1], content);
-		}, 800);
-		tabs[1].addClass('active');
-		tabs[0].removeClass('active');
-		tabs[2].removeClass('active');
+		ajaxOnClick(tabs[1], content, tabs[0], tabs[2], endpoints[1]);
 	});
 	tabs[2].click(() => {
-		content.html('');
-		$('.loader').show();
-		setTimeout(() => {
-			$('.loader').hide();
-			ajaxRequest(endpoints[2], tabs[2], content);
-		}, 800);
-		tabs[2].addClass('active');
-		tabs[0].removeClass('active');
-		tabs[1].removeClass('active');
+		ajaxOnClick(tabs[2], content, tabs[0], tabs[1], endpoints[2]);
 	});
 
+	// Validazione form
+	const email = $('#email');
+	const textarea = $('#message');
+
+	$('.contacts__form').submit(() => {
+		email.validity.valid
+			? email.validationMessage('')
+			: email.validationMessage('Enter an email address');
+		textarea.validity.valid
+			? textarea.validationMessage('')
+			: textare.validationMessage('Enter a message');
+	});
 	/************
 	 * Functions
 	 ************/
@@ -175,5 +160,18 @@ $(document).ready(function() {
 			tab.html(response.item.title);
 			content.html(response.item.content);
 		});
+	}
+
+	// gestione chiamate ajax su click
+	function ajaxOnClick(activeTab, content, inactiveTab1, inactiveTab2, endpoint) {
+		content.html('');
+		$('.loader').show();
+		setTimeout(() => {
+			$('.loader').hide();
+			ajaxRequest(endpoint, activeTab, content);
+		}, 800);
+		activeTab.addClass('active');
+		inactiveTab1.removeClass('active');
+		inactiveTab2.removeClass('active');
 	}
 }); // End Doc Ready
